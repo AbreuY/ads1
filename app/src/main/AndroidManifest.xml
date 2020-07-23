@@ -11,9 +11,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".VungleActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_vungle"
-            android:theme="@style/FullscreenTheme"></activity>
+            android:label="@string/title_activity_vungle">
+        </activity>
         <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
