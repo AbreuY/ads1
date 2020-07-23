@@ -24,7 +24,7 @@ import com.vungle.warren.error.VungleException;
 public class VungleActivity extends AppCompatActivity {
 
     private Button load_btn, play_btn, init_btn, init_status_btn, checkCanPlayAd_btn;
-    private TextView log_tv;
+    private TextView log_tv, legend_textview;
     private ScrollView scrollview;
     private String appId, placementId;
     private String TAG = "adwatcher vungle";
@@ -41,23 +41,20 @@ public class VungleActivity extends AppCompatActivity {
         init_btn = findViewById(R.id.init);
         init_status_btn = findViewById(R.id.init_status);
         checkCanPlayAd_btn = findViewById(R.id.playcheck);
+        legend_textview = findViewById(R.id.legend);
 
         appId = "5a91fbcce1b3413c03002403";
         placementId = "DEFAULT-4820184";
 
-        final LoadAdCallback vungleLoadAdCallback = new LoadAdCallback() {
-            @Override
-            public void onAdLoad(String id) {
-                // Ad has been successfully loaded for the placement
-                appendlog("onAdLoad");
-            }
-
-            @Override
-            public void onError(String id, VungleException exception) {
-                // Ad has failed to load for the placement
-                appendlog("onError");
-            }
-        };
+        legend_textview.setText("Callbacks:\n" +
+                "Init onSuccess\n" +
+                "Init onError\n" +
+                "Init onAutoCacheAdAvailable\n" +
+                "Load onAdLoad, onError\n" +
+                "onAdStart, onAdEnd\n" +
+                "onAdClick, onAdRewarded\n" +
+                "onAdLeftApplication onError\n" +
+                "onAdClosed");
 
         final PlayAdCallback vunglePlayAdCallback = new PlayAdCallback() {
             @Override
@@ -100,8 +97,6 @@ public class VungleActivity extends AppCompatActivity {
                 appendlog("onError");
             }
         };
-
-
 
         init_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -168,13 +163,7 @@ public class VungleActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
-
-
-
-
 
     private void appendlog(final CharSequence text) {
         runOnUiThread(new Runnable() {
