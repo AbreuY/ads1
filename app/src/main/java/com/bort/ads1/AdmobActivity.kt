@@ -1,6 +1,5 @@
 package com.bort.ads1
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,7 +11,6 @@ import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
 import com.google.android.gms.ads.MobileAds
-import kotlinx.android.synthetic.main.admob_activity.*
 
 
 class AdmobActivity : AppCompatActivity() {
@@ -30,7 +28,8 @@ class AdmobActivity : AppCompatActivity() {
         val legend_textview = findViewById<TextView>(R.id.legend)
 
         val mInterstitialAd = InterstitialAd(context)
-        val appid = "ca-app-pub-3940256099942544/1033173712"
+        val appid = "ca-app-pub-6760835969070814~5912740615"
+        //test: "ca-app-pub-3940256099942544/1033173712"
 
         legend_textview.setText("Callbacks:\n" +
                 "Init Status\n" +
@@ -85,8 +84,6 @@ class AdmobActivity : AppCompatActivity() {
                 }
             }
         }
-
-
 
         init_status_btn.setOnClickListener {
             appendlog("Ad Watcher: Init Status Button Pressed")

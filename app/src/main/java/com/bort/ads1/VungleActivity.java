@@ -1,15 +1,6 @@
 package com.bort.ads1;
-
-import android.annotation.SuppressLint;
-
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ScrollView;
@@ -148,21 +139,18 @@ public class VungleActivity extends AppCompatActivity {
                 }
             }
         });
-
         checkCanPlayAd_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 appendlog(logtag + "Check Can Play Button Pressed");
                 appendlog("can play ad:" + Vungle.canPlayAd(placementId));
             }
         });
-
         play_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 appendlog(logtag + "Play Button Pressed");
                 Vungle.playAd(placementId, null, vunglePlayAdCallback);
             }
         });
-
     }
 
     private void appendlog(final CharSequence text) {
@@ -182,5 +170,4 @@ public class VungleActivity extends AppCompatActivity {
             }
         }, 500);
     }
-
 }
