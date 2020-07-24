@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.bort.ads1">
+    package="com.adviewer.gc.ads">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".IronsourceActivity"
+            android:name="com.adviewer.gc.ads.IronsourceActivity"
             android:label="@string/title_activity_ironsource">
         </activity>
         <activity
@@ -33,7 +33,7 @@
             android:theme="@android:style/Theme.Translucent" />
 
         <activity
-            android:name=".VungleActivity"
+            android:name="com.adviewer.gc.ads.VungleActivity"
             android:label="@string/title_activity_vungle"></activity> <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
@@ -41,13 +41,12 @@
         <!-- test: "ca-app-pub-3940256099942544~3347511713" -->
 
         <activity
-            android:name=".AdmobActivity"
+            android:name="com.adviewer.gc.ads.AdmobActivity"
             android:label="@string/title_activity_admob">
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name="com.adviewer.gc.ads.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

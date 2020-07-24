@@ -1,4 +1,4 @@
-package com.bort.ads1;
+package com.adviewer.gc.ads;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
