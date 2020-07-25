@@ -7,10 +7,8 @@ import android.widget.Button
 import android.widget.ScrollView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.InterstitialAd
-import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.*
+import java.util.*
 
 
 class AdmobActivity : AppCompatActivity() {
@@ -27,9 +25,17 @@ class AdmobActivity : AppCompatActivity() {
         val scrollView = findViewById<ScrollView>(R.id.scrollview)
         val legend_textview = findViewById<TextView>(R.id.legend)
 
+
+
         val mInterstitialAd = InterstitialAd(context)
-        val appid = "ca-app-pub-6760835969070814~5912740615"
+        val appid = "ca-app-pub-6760835969070814/4954882160\n"
         //test: "ca-app-pub-3940256099942544/1033173712"
+
+        
+        val testDeviceIds = Arrays.asList("B9C3F40C355B3D122954E6E0C625B5D7")
+        val configuration = RequestConfiguration.Builder().setTestDeviceIds(testDeviceIds).build()
+        MobileAds.setRequestConfiguration(configuration)
+
 
         legend_textview.setText("Callbacks:\n" +
                 "Init Status\n" +
