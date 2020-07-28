@@ -6,6 +6,9 @@ repositories {
     maven {
         url "https://dl.bintray.com/ironsource-mobile/android-sdk"
     }
+    flatDir {
+        dirs 'libs'
+    }
 }
 
 android {
@@ -15,8 +18,8 @@ android {
         applicationId "com.adviewer.gc.ads"
         minSdkVersion 24
         targetSdkVersion 29
-        versionCode 3
-        versionName "3.0"
+        versionCode 4
+        versionName "4.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -53,4 +56,6 @@ dependencies {
     //ironsource
     implementation 'com.ironsource.sdk:mediationsdk:6.17.0'
 
+    //Unity Ads
+    implementation files('libs/unity-ads.aar')
 }

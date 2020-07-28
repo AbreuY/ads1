@@ -38,7 +38,7 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-6760835969070814~5912740615" />
-        <!-- test: "ca-app-pub-3940256099942544~3347511713" -->
+        <!-- test: "ca-app-pub-3940256099942544~3347511713"  real: "ca-app-pub-6760835969070814~5912740615"  -->
 
         <activity
             android:name="com.adviewer.gc.ads.AdmobActivity"

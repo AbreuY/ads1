@@ -1,5 +1,6 @@
 package com.adviewer.gc.ads;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
@@ -19,13 +20,13 @@ public class IronsourceActivity extends AppCompatActivity {
     private String appKey, placementName;
     private String TAG = "adwatcher ironsource";
     private String logtag = "Ad Watcher:";
-    private Context context;
+    //private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ironsource2);
-        context = this;
+        final Context context = this;
         load_btn = findViewById(R.id.load);
         play_btn = findViewById(R.id.play);
         log_tv = findViewById(R.id.log);
@@ -36,7 +37,6 @@ public class IronsourceActivity extends AppCompatActivity {
         legend_textview = findViewById(R.id.legend);
         appKey = "ce7adbcd";
         placementName = "DefaultInterstitial";
-
 
         IronSource.setInterstitialListener(new InterstitialListener() {
             /**
@@ -158,4 +158,62 @@ public class IronsourceActivity extends AppCompatActivity {
         super.onPause();
         IronSource.onPause(this);
     }
+
+//    public void init(){
+//        IronSource.init(this, appKey, IronSource.AD_UNIT.INTERSTITIAL);
+//
+//        IronSource.setInterstitialListener(new InterstitialListener() {
+//            /**
+//             Invoked when Interstitial Ad is ready to be shown after load function was called.
+//             */
+//            @Override
+//            public void onInterstitialAdReady() {
+//                appendlog("onInterstitialAdReady");
+//            }
+//            /**
+//             invoked when there is no Interstitial Ad available after calling load function.
+//             */
+//            @Override
+//            public void onInterstitialAdLoadFailed(IronSourceError error) {
+//                appendlog("onInterstitialAdLoadFailed");
+//            }
+//            /**
+//             Invoked when the Interstitial Ad Unit is opened
+//             */
+//            @Override
+//            public void onInterstitialAdOpened() {
+//                appendlog("onInterstitialAdOpened");
+//            }
+//            /*
+//             * Invoked when the ad is closed and the user is about to return to the application.
+//             */
+//            @Override
+//            public void onInterstitialAdClosed() {
+//                appendlog("onInterstitialAdClosed");
+//            }
+//            /*
+//             * Invoked when the ad was opened and shown successfully.
+//             */
+//            @Override
+//            public void onInterstitialAdShowSucceeded() {
+//                appendlog("onInterstitialAdShowSucceeded");
+//            }
+//            /**
+//             * Invoked when Interstitial ad failed to show.
+//             // @param error - An object which represents the reason of showInterstitial failure.
+//             */
+//            @Override
+//            public void onInterstitialAdShowFailed(IronSourceError error) {
+//                appendlog("onInterstitialAdShowFailed");
+//            }
+//            /*
+//             * Invoked when the end user clicked on the interstitial ad.
+//             */
+//            @Override
+//            public void onInterstitialAdClicked() {
+//                appendlog("onInterstitialAdClicked");
+//            }
+//        });
+//
+//    }
 }

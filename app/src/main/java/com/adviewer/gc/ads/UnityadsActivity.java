@@ -1,21 +1,18 @@
 package com.adviewer.gc.ads;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.vungle.warren.InitCallback;
-import com.vungle.warren.LoadAdCallback;
-import com.vungle.warren.PlayAdCallback;
-import com.vungle.warren.Vungle;
-import com.vungle.warren.error.VungleException;
+import com.unity3d.ads.IUnityAdsListener;
+import com.unity3d.ads.UnityAds;
 
 
-public class UnityadsActivity extends AppCompatActivity {
+public class UnityadsActivity extends AppCompatActivity{
 
     private Button load_btn, play_btn, init_btn, init_status_btn, checkCanPlayAd_btn;
     private TextView log_tv, legend_textview;
@@ -23,11 +20,15 @@ public class UnityadsActivity extends AppCompatActivity {
     private String appId, placementId;
     private String TAG = "adwatcher vungle";
     private String logtag = "Ad Watcher:";
+    private Context context;
+
+    private String unityGameID = "1234567";
+    private Boolean testMode = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vungle);
+        setContentView(R.layout.activity_unityads);
         load_btn = findViewById(R.id.load);
         play_btn = findViewById(R.id.play);
         log_tv = findViewById(R.id.log);
@@ -36,9 +37,13 @@ public class UnityadsActivity extends AppCompatActivity {
         init_status_btn = findViewById(R.id.init_status);
         checkCanPlayAd_btn = findViewById(R.id.playcheck);
         legend_textview = findViewById(R.id.legend);
+        context = this;
 
         appId = "5a91fbcce1b3413c03002403";
         placementId = "DEFAULT-4820184";
+
+        final UnityAdsListener myAdsListener = new UnityAdsListener ();
+
 
         legend_textview.setText("Callbacks:\n" +
                 "Init onSuccess\n" +
@@ -50,11 +55,11 @@ public class UnityadsActivity extends AppCompatActivity {
                 "onAdLeftApplication onError\n" +
                 "onAdClosed");
 
-
-
         init_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 appendlog(logtag + "Init Button Pressed");
+
+                //UnityAds.initialize (context, unityGameID, myAdsListener, testMode);
             }
         });
 
@@ -98,5 +103,29 @@ public class UnityadsActivity extends AppCompatActivity {
                 scrollview.fullScroll(View.FOCUS_DOWN);
             }
         }, 500);
+    }
+
+    // Implement the IUnityAdsListener interface methods:
+    private class UnityAdsListener implements IUnityAdsListener {
+
+        @Override
+        public void onUnityAdsReady (String placementId) {
+            // Implement functionality for an ad being ready to show.
+        }
+
+        @Override
+        public void onUnityAdsStart (String placementId) {
+            // Implement functionality for a user starting to watch an ad.
+        }
+
+        @Override
+        public void onUnityAdsFinish (String placementId, UnityAds.FinishState finishState) {
+            // Implement functionality for a user finishing an ad.
+        }
+
+        @Override
+        public void onUnityAdsError (UnityAds.UnityAdsError error, String message) {
+            // Implement functionality for a Unity Ads service error occurring.
+        }
     }
 }

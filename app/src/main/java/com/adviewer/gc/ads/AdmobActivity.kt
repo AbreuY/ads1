@@ -25,17 +25,9 @@ class AdmobActivity : AppCompatActivity() {
         val scrollView = findViewById<ScrollView>(R.id.scrollview)
         val legend_textview = findViewById<TextView>(R.id.legend)
 
-
-
         val mInterstitialAd = InterstitialAd(context)
-        val appid = "ca-app-pub-6760835969070814/4954882160\n"
-        //test: "ca-app-pub-3940256099942544/1033173712"
-
-        
-        val testDeviceIds = Arrays.asList("B9C3F40C355B3D122954E6E0C625B5D7")
-        val configuration = RequestConfiguration.Builder().setTestDeviceIds(testDeviceIds).build()
-        MobileAds.setRequestConfiguration(configuration)
-
+        val adId = "ca-app-pub-6760835969070814/4954882160"
+        //val adId = "ca-app-pub-3940256099942544/1033173712" //test
 
         legend_textview.setText("Callbacks:\n" +
                 "Init Status\n" +
@@ -57,7 +49,7 @@ class AdmobActivity : AppCompatActivity() {
         init_btn.setOnClickListener {
             appendlog("Ad Watcher: Init Button Pressed")
             MobileAds.initialize(context)
-            mInterstitialAd.adUnitId = appid
+            mInterstitialAd.adUnitId = adId
             mInterstitialAd.adListener = object: AdListener() {
                 override fun onAdLoaded() {
                     // Code to be executed when an ad finishes loading.

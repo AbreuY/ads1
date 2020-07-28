@@ -13,10 +13,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         val admob_btn = findViewById<Button>(R.id.admob)
         val vungle_btn = findViewById<Button>(R.id.vungle)
         val ironsource_btn = findViewById<Button>(R.id.ironsource)
+        val unityads_btn = findViewById<Button>(R.id.unityads)
 
         admob_btn.setOnClickListener {
             val intent = Intent(this, AdmobActivity::class.java)
@@ -32,6 +32,12 @@ class MainActivity : AppCompatActivity() {
 
         ironsource_btn.setOnClickListener {
             val intent = Intent(this, IronsourceActivity::class.java)
+            // start your next activity
+            startActivity(intent)
+        }
+
+        unityads_btn.setOnClickListener {
+            val intent = Intent(this, UnityadsActivity::class.java)
             // start your next activity
             startActivity(intent)
         }
