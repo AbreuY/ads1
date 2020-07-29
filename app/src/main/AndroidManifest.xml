@@ -18,6 +18,10 @@
             android:label="@string/title_activity_ironsource">
         </activity>
         <activity
+            android:name="com.adviewer.gc.ads.UnityadsActivity"
+            android:label="@string/title_activity_unityads">
+        </activity>
+        <activity
             android:name="com.ironsource.sdk.controller.ControllerActivity"
             android:configChanges="orientation|screenSize"
             android:hardwareAccelerated="true" />

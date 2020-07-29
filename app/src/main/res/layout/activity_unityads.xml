@@ -15,35 +15,10 @@
         android:text="Initialize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.295"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.095" />
-
-    <Button
-        android:id="@+id/init_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="32dp"
-        android:text="Check Init Status"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/init"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.095" />
-
-    <Button
-        android:id="@+id/load"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="74dp"
-        android:text="Load Ad"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/init" />
+        app:layout_constraintVertical_bias="0.101" />
 
     <TextView
         android:id="@+id/legend"
@@ -51,8 +26,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="dfgdsgdgd"
-        app:layout_constraintEnd_toStartOf="@+id/load"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/init" />
 
@@ -62,12 +35,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="64dp"
         android:text="Play Ad"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/load" />
+        app:layout_constraintTop_toBottomOf="@+id/init" />
 
     <ScrollView
         android:id="@+id/scrollview"
@@ -90,10 +63,10 @@
         android:id="@+id/playcheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="64dp"
         android:text="Ad check"
         app:layout_constraintStart_toEndOf="@+id/play"
-        app:layout_constraintTop_toBottomOf="@+id/load" />
+        app:layout_constraintTop_toBottomOf="@+id/init" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

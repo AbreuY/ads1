@@ -32,7 +32,6 @@ public class IronsourceActivity extends AppCompatActivity {
         log_tv = findViewById(R.id.log);
         scrollview = findViewById(R.id.scrollview);
         init_btn = findViewById(R.id.init);
-        init_status_btn = findViewById(R.id.init_status);
         checkCanPlayAd_btn = findViewById(R.id.playcheck);
         legend_textview = findViewById(R.id.legend);
         appKey = "ce7adbcd";

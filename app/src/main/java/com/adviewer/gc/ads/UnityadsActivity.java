@@ -11,78 +11,59 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.unity3d.ads.IUnityAdsListener;
 import com.unity3d.ads.UnityAds;
 
+import kotlin.Unit;
 
-public class UnityadsActivity extends AppCompatActivity{
 
-    private Button load_btn, play_btn, init_btn, init_status_btn, checkCanPlayAd_btn;
+public class UnityadsActivity extends AppCompatActivity {
+
+    private Button play_btn, init_btn, checkCanPlayAd_btn;
     private TextView log_tv, legend_textview;
     private ScrollView scrollview;
-    private String appId, placementId;
     private String TAG = "adwatcher vungle";
     private String logtag = "Ad Watcher:";
     private Context context;
 
-    private String unityGameID = "1234567";
-    private Boolean testMode = true;
+    private String unityGameID = "3730971";
+    private String placementId = "testplacement";
+    private UnityAdsListener myAdsListener;
+    private boolean testmode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_unityads);
-        load_btn = findViewById(R.id.load);
         play_btn = findViewById(R.id.play);
         log_tv = findViewById(R.id.log);
         scrollview = findViewById(R.id.scrollview);
         init_btn = findViewById(R.id.init);
-        init_status_btn = findViewById(R.id.init_status);
         checkCanPlayAd_btn = findViewById(R.id.playcheck);
         legend_textview = findViewById(R.id.legend);
         context = this;
 
-        appId = "5a91fbcce1b3413c03002403";
-        placementId = "DEFAULT-4820184";
-
-        final UnityAdsListener myAdsListener = new UnityAdsListener ();
-
+        myAdsListener = new UnityAdsListener ();
 
         legend_textview.setText("Callbacks:\n" +
-                "Init onSuccess\n" +
-                "Init onError\n" +
-                "Init onAutoCacheAdAvailable\n" +
-                "Load onAdLoad, onError\n" +
-                "onAdStart, onAdEnd\n" +
-                "onAdClick, onAdRewarded\n" +
-                "onAdLeftApplication onError\n" +
-                "onAdClosed");
+                "onUnityAdsReady\n" +
+                "onUnityAdsStart\n" +
+                "onUnityAdsFinish\n" +
+                "onUnityAdsError");
 
         init_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 appendlog(logtag + "Init Button Pressed");
-
-                //UnityAds.initialize (context, unityGameID, myAdsListener, testMode);
+               init_unityads();
             }
         });
 
-        init_status_btn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                appendlog(logtag + "Init Status Button Pressed");
-            }
-        });
-
-        load_btn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                appendlog(logtag + "Load Button Pressed");
-
-            }
-        });
         checkCanPlayAd_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                appendlog(logtag + "Check Can Play Button Pressed");
+                appendlog(logtag + UnityAds.isReady(placementId));
             }
         });
         play_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 appendlog(logtag + "Play Button Pressed");
+                play_ad();
             }
         });
     }
@@ -96,7 +77,6 @@ public class UnityadsActivity extends AppCompatActivity{
                 log_tv.append(text);
             }
         });
-
         scrollview.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -105,27 +85,39 @@ public class UnityadsActivity extends AppCompatActivity{
         }, 500);
     }
 
+    public void init_unityads(){
+        UnityAds.initialize(this, unityGameID, myAdsListener, testmode);
+    }
+
+    public void play_ad(){
+        UnityAds.show(this, placementId);
+    }
+
     // Implement the IUnityAdsListener interface methods:
     private class UnityAdsListener implements IUnityAdsListener {
 
         @Override
         public void onUnityAdsReady (String placementId) {
             // Implement functionality for an ad being ready to show.
+            appendlog("onUnityAdsReady");
         }
 
         @Override
         public void onUnityAdsStart (String placementId) {
             // Implement functionality for a user starting to watch an ad.
+            appendlog("onUnityAdsStart");
         }
 
         @Override
         public void onUnityAdsFinish (String placementId, UnityAds.FinishState finishState) {
             // Implement functionality for a user finishing an ad.
+            appendlog("onUnityAdsFinish");
         }
 
         @Override
         public void onUnityAdsError (UnityAds.UnityAdsError error, String message) {
             // Implement functionality for a Unity Ads service error occurring.
+            appendlog("onUnityAdsError");
         }
     }
 }

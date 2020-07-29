@@ -3,4 +3,5 @@
     <string name="title_activity_admob">Admob</string>
     <string name="title_activity_vungle">Vungle</string>
     <string name="title_activity_ironsource">Ironsource</string>
+    <string name="title_activity_unityads">Unity Ads</string>
 </resources>
